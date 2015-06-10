@@ -32,7 +32,7 @@ first_downbyte=0
 while [ $loop -eq 1 ]
 do
 	if [ $j -gt 5 ];then
-		j=1
+		j=0
 		let k++
 	fi
 	if [ $k -gt 23 ];then
@@ -126,7 +126,7 @@ do
 	#upload=`cat /tmp/speed.txt|grep "Upload"`
 	#echo "the upload data is $upload"
 	#echo "AAAAAAAAAAA ${upload:9:2}"
-	if [ $i -le 144 ];then
+	if [ $i -le 143 ];then
 		upload=`cat /tmp/speed.txt|grep "Upload"`
 		#echo "the upload data is $upload"
 		[ ${upload:9:2} == "[]" ] && upload=${upload%]*}${upspeed}"]," || upload=${upload%]*}","${upspeed}"],"
@@ -161,7 +161,7 @@ do
 		
 		download=`cat /tmp/speed.txt |grep "Download"`	
 		num=`grep -n "Download" /tmp/speed.txt|cut -d":" -f1`
-		download=${download%]*}","${download}"],"
+		download=${download%]*}","${downspeed}"],"
 		head_download=`echo $download|cut -d"[" -f1`
 		tmp_download=`echo $download|cut -d "[" -f2`
 		##delete the first data
@@ -173,7 +173,7 @@ do
 		timedot=`cat /tmp/speed.txt |grep "TimePoint"`	
 		num=`grep -n "TimePoint" /tmp/speed.txt|cut -d":" -f1`
 		timedot=${timedot%]*}","${timepoint}"]"
-		head_timedot=`echo $timedot|cut -d"[" -f1`
+		head_timedot=`echo $timedot|cut -d "[" -f1`
 		tmp_timedot=`echo $timedot|cut -d "[" -f2`
 		##delete the first data
 		tmp_timedot=${tmp_timedot#*,}
