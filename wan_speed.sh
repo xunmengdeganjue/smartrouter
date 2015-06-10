@@ -1,5 +1,6 @@
 #! /bin/sh
 
+START=47
 delay=4
 odd_upbyte=""
 odd_dobyte=""
